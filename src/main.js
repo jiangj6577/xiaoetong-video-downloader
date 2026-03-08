@@ -1,16 +1,18 @@
 const { app, BrowserWindow, dialog, ipcMain } = require('electron');
 const path = require('path');
-const { DownloadJob } = require('./core/downloader');
+const { DownloadJob, deriveVideoId } = require('./core/downloader');
 
 let mainWindow = null;
 let currentJob = null;
+let batchRunning = false;
+let batchCancelled = false;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1080,
-    height: 720,
-    minWidth: 900,
-    minHeight: 640,
+    width: 1200,
+    height: 780,
+    minWidth: 960,
+    minHeight: 680,
     backgroundColor: '#f6efe4',
     webPreferences: {
       contextIsolation: true,
@@ -38,7 +40,7 @@ ipcMain.handle('select-output-root', async () => {
 });
 
 ipcMain.handle('start-download', async (_event, payload) => {
-  if (currentJob) {
+  if (currentJob || batchRunning) {
     return { ok: false, error: 'A download is already running.' };
   }
 
@@ -49,6 +51,7 @@ ipcMain.handle('start-download', async (_event, payload) => {
     referer: payload.referer,
     outputRoot: payload.outputRoot,
     outputFolder: payload.outputFolder,
+    outputFileName: payload.outputFolder,
     cleanup: true,
   });
 
@@ -75,7 +78,121 @@ ipcMain.handle('start-download', async (_event, payload) => {
   return { ok: true };
 });
 
+ipcMain.handle('start-batch-download', async (_event, payload) => {
+  if (currentJob || batchRunning) {
+    return { ok: false, error: 'A download is already running.' };
+  }
+
+  const { userId, m3u8Urls, names, tsUrlDemo, referer, outputRoot } = payload;
+  if (!m3u8Urls || m3u8Urls.length === 0) {
+    return { ok: false, error: 'No m3u8 URLs provided.' };
+  }
+
+  batchRunning = true;
+  batchCancelled = false;
+
+  // Pre-compute unique folder names to avoid overwrites
+  // Use user-provided names if available, otherwise derive from URL
+  const folderNames = [];
+  const folderCount = {};
+  for (let i = 0; i < m3u8Urls.length; i++) {
+    let base = (names && names[i]) ? names[i] : deriveVideoId(m3u8Urls[i]);
+    // Sanitize folder name: remove invalid filesystem characters
+    base = base.replace(/[<>:"/\\|?*]/g, '_').trim() || 'video';
+    if (!folderCount[base]) {
+      folderCount[base] = 1;
+      folderNames.push(base);
+    } else {
+      folderCount[base]++;
+      folderNames.push(`${base}_${folderCount[base]}`);
+    }
+  }
+
+  // Send folder names to renderer for display
+  sendToRenderer('batch-folder-names', folderNames);
+
+  // Run the batch queue asynchronously
+  (async () => {
+    for (let i = 0; i < m3u8Urls.length; i++) {
+      if (batchCancelled) {
+        // Mark remaining items as cancelled
+        for (let j = i; j < m3u8Urls.length; j++) {
+          sendToRenderer('batch-item-status', { index: j, status: 'cancelled' });
+        }
+        break;
+      }
+
+      const url = m3u8Urls[i];
+      const folderName = folderNames[i];
+
+      sendToRenderer('batch-item-status', { index: i, status: 'running' });
+      sendToRenderer('log', `\n━━━ Batch [${i + 1}/${m3u8Urls.length}] ━━━ ${folderName}`);
+
+      currentJob = new DownloadJob({
+        userId,
+        m3u8Url: url,
+        tsUrlDemo,
+        referer,
+        outputRoot,
+        outputFolder: folderName,
+        outputFileName: folderName,
+        cleanup: true,
+      });
+
+      currentJob.on('log', (msg) => sendToRenderer('log', msg));
+      currentJob.on('stage', (stage) => sendToRenderer('stage', stage));
+      currentJob.on('progress', (progress) => {
+        sendToRenderer('progress', {
+          ...progress,
+          batchIndex: i,
+          batchTotal: m3u8Urls.length,
+        });
+      });
+
+      try {
+        const result = await currentJob.start();
+        sendToRenderer('batch-item-status', {
+          index: i,
+          status: 'done',
+          outputFile: result.outputFile,
+        });
+      } catch (err) {
+        if (err && err.code === 'CANCELLED') {
+          sendToRenderer('batch-item-status', { index: i, status: 'cancelled' });
+          // Mark remaining as cancelled
+          for (let j = i + 1; j < m3u8Urls.length; j++) {
+            sendToRenderer('batch-item-status', { index: j, status: 'cancelled' });
+          }
+          batchCancelled = true;
+        } else {
+          sendToRenderer('log', `Error on item ${i + 1}: ${err.message || String(err)}`);
+          sendToRenderer('batch-item-status', {
+            index: i,
+            status: 'error',
+            error: err.message || String(err),
+          });
+          // Continue to next item on error
+        }
+      } finally {
+        currentJob = null;
+      }
+    }
+
+    batchRunning = false;
+    if (batchCancelled) {
+      sendToRenderer('cancelled', {});
+    } else {
+      sendToRenderer('batch-done', { total: m3u8Urls.length });
+    }
+  })();
+
+  return { ok: true };
+});
+
 ipcMain.handle('cancel-download', () => {
+  if (batchRunning) {
+    batchCancelled = true;
+  }
   if (currentJob) {
     currentJob.cancel();
     return true;

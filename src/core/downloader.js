@@ -30,7 +30,7 @@ function createCancelSignal() {
     onAbort(callback) {
       if (this.aborted) {
         callback();
-        return () => {};
+        return () => { };
       }
       listeners.add(callback);
       return () => listeners.delete(callback);
@@ -74,8 +74,8 @@ function httpGetBuffer(url, headers, signal) {
     });
     const off = signal
       ? signal.onAbort(() => {
-          req.destroy(new Error('Cancelled'));
-        })
+        req.destroy(new Error('Cancelled'));
+      })
       : null;
     req.on('error', (err) => reject(err));
     req.on('close', () => {
@@ -111,8 +111,8 @@ function downloadToFile(url, savefilepath, headers, signal) {
     });
     const off = signal
       ? signal.onAbort(() => {
-          req.destroy(new Error('Cancelled'));
-        })
+        req.destroy(new Error('Cancelled'));
+      })
       : null;
     req.on('error', (err) => reject(err));
     req.on('close', () => {
@@ -289,8 +289,8 @@ async function mergeSegments(decodeDir, outputFile, onLog, signal) {
     );
     const onAbort = signal
       ? signal.onAbort(() => {
-          proc.kill('SIGINT');
-        })
+        proc.kill('SIGINT');
+      })
       : null;
     proc.stdout.on('data', (data) => onLog(data.toString().trim()));
     proc.stderr.on('data', (data) => onLog(data.toString().trim()));
@@ -407,8 +407,10 @@ class DownloadJob extends EventEmitter {
       this.emit('progress', { current: i + 1, total: tsUrls.length });
     }
 
+    const mp4Name = (opts.outputFileName || 'output') + '.mp4';
+
     this.emit('stage', 'merging');
-    await mergeSegments(decodeDir, path.join(outputDir, 'output.mp4'), (msg) => {
+    await mergeSegments(decodeDir, path.join(outputDir, mp4Name), (msg) => {
       if (msg) this.emit('log', msg);
     }, this.signal);
 
@@ -419,7 +421,7 @@ class DownloadJob extends EventEmitter {
     }
 
     this.emit('stage', 'done');
-    return { outputDir, outputFile: path.join(outputDir, 'output.mp4') };
+    return { outputDir, outputFile: path.join(outputDir, mp4Name) };
   }
 }
 
