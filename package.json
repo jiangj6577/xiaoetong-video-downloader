@@ -1,6 +1,6 @@
 {
   "name": "xiaoe-tech-downloader",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "小鹅通视频全自动下载器 - 支持批量解析、M3U8下载、加密视频解密与合并 (Xiaoetong Video Downloader)",
   "author": "Clearner1",
