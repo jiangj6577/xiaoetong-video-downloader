@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld('api', {
 
   // XiaoE login
   xiaoeLogin: (payload) => ipcRenderer.invoke('xiaoe-login', payload),
+  getXiaoeLoginStatus: () => ipcRenderer.invoke('get-xiaoe-login-status'),
   clearXiaoeLogin: () => ipcRenderer.invoke('clear-xiaoe-login'),
   onLoginStatus: (callback) => ipcRenderer.on('login-status', (_event, status) => callback(status)),
 

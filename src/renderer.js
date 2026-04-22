@@ -23,6 +23,7 @@ const els = {
   parseProgressBar: document.getElementById('parseProgressBar'),
   parseStatusText: document.getElementById('parseStatusText'),
   parseLogOutput: document.getElementById('parseLogOutput'),
+  copyParseLogBtn: document.getElementById('copyParseLogBtn'),
   // Mode switcher elements
   modeAutoBtn: document.getElementById('modeAutoBtn'),
   modeManualBtn: document.getElementById('modeManualBtn'),
@@ -271,6 +272,12 @@ function appendParseLog(message) {
   els.parseLogOutput.scrollTop = els.parseLogOutput.scrollHeight;
 }
 
+function buildParseLogCodeBlock() {
+  const content = els.parseLogOutput.textContent.trim();
+  if (!content) return '';
+  return `\`\`\`text\n${content}\n\`\`\``;
+}
+
 els.parseBtn.addEventListener('click', async () => {
   const courseUrl = els.courseUrlInput.value.trim();
   if (!courseUrl) {
@@ -327,6 +334,21 @@ async function init() {
   if (defaultRoot) {
     els.outputRoot.value = defaultRoot;
   }
+
+  try {
+    const loginState = await window.api.getXiaoeLoginStatus();
+    const isLoggedIn = loginState && loginState.status === 'ok';
+    setLoginStatus(isLoggedIn ? 'ok' : 'none');
+    if (isLoggedIn) {
+      appendParseLog(`已检测到登录状态（cookies: ${loginState.cookieCount || 0}）`);
+    } else {
+      appendParseLog('当前未检测到登录状态，请先登录后再解析课程。');
+    }
+  } catch (err) {
+    setLoginStatus('none');
+    appendParseLog('登录状态检测失败，请手动登录后再解析课程。');
+  }
+
   // Start with one empty row
   addRow();
 }
@@ -339,6 +361,27 @@ els.browseBtn.addEventListener('click', async () => {
   const root = await window.api.selectOutputRoot();
   if (root) {
     els.outputRoot.value = root;
+  }
+});
+
+els.copyParseLogBtn.addEventListener('click', async () => {
+  const text = buildParseLogCodeBlock();
+  if (!text) {
+    appendParseLog('暂无可复制的解析日志。');
+    return;
+  }
+
+  const originalText = els.copyParseLogBtn.textContent;
+  try {
+    await navigator.clipboard.writeText(text);
+    els.copyParseLogBtn.textContent = '已复制';
+  } catch (err) {
+    els.copyParseLogBtn.textContent = '复制失败';
+    appendParseLog(`复制解析日志失败: ${err.message}`);
+  } finally {
+    setTimeout(() => {
+      els.copyParseLogBtn.textContent = originalText;
+    }, 1500);
   }
 });
 
