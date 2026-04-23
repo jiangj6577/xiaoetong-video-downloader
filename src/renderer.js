@@ -3,11 +3,8 @@ const els = {
   outputRoot: document.getElementById('outputRoot'),
   browseBtn: document.getElementById('browseBtn'),
   addRowBtn: document.getElementById('addRowBtn'),
+  exportListBtn: document.getElementById('exportListBtn'),
   batchTableBody: document.getElementById('batchTableBody'),
-  startBtn: document.getElementById('startBtn'),
-  cancelBtn: document.getElementById('cancelBtn'),
-  clearLogBtn: document.getElementById('clearLogBtn'),
-  logOutput: document.getElementById('logOutput'),
   statusText: document.getElementById('statusText'),
   progressText: document.getElementById('progressText'),
   progressBar: document.getElementById('progressBar'),
@@ -177,13 +174,11 @@ function setBatchProgress(index, total) {
 
 function appendLog(message) {
   if (!message) return;
-  const line = `${new Date().toLocaleTimeString()}  ${message}\n`;
-  els.logOutput.textContent += line;
-  els.logOutput.scrollTop = els.logOutput.scrollHeight;
+  console.log(message);
 }
 
 function lockForm(isLocked) {
-  const fields = [els.userId, els.outputRoot, els.browseBtn, els.addRowBtn];
+  const fields = [els.userId, els.outputRoot, els.browseBtn, els.addRowBtn, els.exportListBtn];
   fields.forEach((f) => { f.disabled = isLocked; });
 
   // Lock all row inputs and remove buttons
@@ -194,9 +189,6 @@ function lockForm(isLocked) {
   // Lock mode switcher during download
   els.modeAutoBtn.disabled = isLocked;
   els.modeManualBtn.disabled = isLocked;
-
-  els.startBtn.disabled = isLocked;
-  els.cancelBtn.disabled = !isLocked;
 }
 
 // ─── Login Logic ───
@@ -276,6 +268,17 @@ function buildParseLogCodeBlock() {
   const content = els.parseLogOutput.textContent.trim();
   if (!content) return '';
   return `\`\`\`text\n${content}\n\`\`\``;
+}
+
+function buildDownloadListExportText() {
+  const items = getTableData();
+  if (items.length === 0) return '';
+
+  const stripExtension = (name) => String(name || '').trim().replace(/\.[^./\\]+$/, '');
+
+  return items
+    .map((item) => `${stripExtension(item.name)},${item.url}`)
+    .join('\n');
 }
 
 els.parseBtn.addEventListener('click', async () => {
@@ -385,93 +388,22 @@ els.copyParseLogBtn.addEventListener('click', async () => {
   }
 });
 
-els.clearLogBtn.addEventListener('click', () => {
-  els.logOutput.textContent = '';
-});
-
-els.startBtn.addEventListener('click', async () => {
-  const items = getTableData();
-  if (items.length === 0) {
-    appendLog('No valid m3u8 URLs in the table.');
+els.exportListBtn.addEventListener('click', async () => {
+  const content = buildDownloadListExportText();
+  if (!content) {
+    appendParseLog('⚠ 当前下载列表为空，无法导出。');
     return;
   }
-
-  const userId = els.userId.value.trim();
-  if (!userId) {
-    appendLog('Missing userId.');
-    return;
-  }
-
-  // Validate all URLs before starting
-  const invalidRows = [];
-  items.forEach((item, i) => {
-    try {
-      new URL(item.url);
-    } catch (e) {
-      invalidRows.push({ index: i, url: item.url, name: item.name });
+  try {
+    const result = await window.api.exportDownloadList({ content });
+    if (result && result.ok) {
+      appendParseLog(`✅ 下载列表已导出: ${result.filePath}`);
+    } else if (!result || !result.cancelled) {
+      appendParseLog('⚠ 导出下载列表失败。');
     }
-  });
-  if (invalidRows.length > 0) {
-    invalidRows.forEach((r) => {
-      appendLog(`⚠ Row ${r.index + 1} "${r.name || '(unnamed)'}" has invalid URL: ${r.url}`);
-      setRowStatus(r.index, 'error');
-    });
-    appendLog('Please fix the invalid URLs above before starting.');
-    return;
+  } catch (err) {
+    appendParseLog(`❌ 导出下载列表失败: ${err.message}`);
   }
-
-  setStatus('Starting');
-  setProgress(0, 0);
-  lockForm(true);
-
-  if (items.length === 1) {
-    isBatchMode = false;
-    els.batchProgress.textContent = '';
-    setRowStatus(0, 'running');
-
-    const payload = {
-      userId,
-      m3u8Url: items[0].url,
-      tsUrlDemo: "",
-      referer: "",
-      outputRoot: els.outputRoot.value.trim(),
-      outputFolder: items[0].name || '',
-    };
-
-    appendLog('Starting download...');
-    const result = await window.api.startDownload(payload);
-    if (!result.ok) {
-      appendLog(result.error || 'Failed to start.');
-      setRowStatus(0, 'error');
-      lockForm(false);
-      setStatus('Idle');
-    }
-  } else {
-    isBatchMode = true;
-    setAllRowsStatus('waiting');
-    setBatchProgress(0, items.length);
-
-    const payload = {
-      userId,
-      m3u8Urls: items.map((i) => i.url),
-      names: items.map((i) => i.name),
-      tsUrlDemo: "",
-      referer: "",
-      outputRoot: els.outputRoot.value.trim(),
-    };
-
-    appendLog(`Starting batch download: ${items.length} videos...`);
-    const result = await window.api.startBatchDownload(payload);
-    if (!result.ok) {
-      appendLog(result.error || 'Failed to start batch.');
-      lockForm(false);
-      setStatus('Idle');
-    }
-  }
-});
-
-els.cancelBtn.addEventListener('click', async () => {
-  await window.api.cancelDownload();
 });
 
 // ─── IPC Listeners ───

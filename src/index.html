@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Xiaoetong Downloader</title>
+  <title>小鹅通Downloader</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -17,27 +17,6 @@
   </div>
 
   <main class="app">
-    <header class="hero">
-      <div>
-        <p class="eyebrow">Batch workflow</p>
-        <h1>Xiaoetong Downloader</h1>
-        <p class="subhead">
-          Fill in the table below and batch download HLS videos with auto-merge.
-        </p>
-      </div>
-      <div class="status-card">
-        <div class="status-label">Status</div>
-        <div id="statusText" class="status-value">Idle</div>
-        <div class="status-meta">
-          <span id="batchProgress"></span>
-          <span id="progressText">0 / 0</span>
-        </div>
-        <div class="progress-track">
-          <div id="progressBar" class="progress-bar" style="width: 0%"></div>
-        </div>
-      </div>
-    </header>
-
     <section class="grid">
       <!-- Mode Switcher -->
       <div class="mode-switcher" id="modeSwitcher">
@@ -141,8 +120,8 @@
           <div class="manual-step">
             <span class="manual-step-num">❹</span>
             <div>
-              <strong>填入下方表格</strong>
-              <p>将 userId 和 m3u8 URL 填入下方，点击 <strong>Start</strong> 即可下载。</p>
+              <strong>填入并导出列表</strong>
+              <p>将 userId 和 m3u8 URL 填入下方表格，点击 <strong>导出</strong> 保存当前下载清单。</p>
             </div>
           </div>
         </div>
@@ -174,7 +153,10 @@
       <div class="card batch-card">
         <div class="batch-table-header">
           <h2>Download List</h2>
-          <button id="addRowBtn" class="btn ghost small" type="button">+ Add Row</button>
+          <div class="batch-table-actions">
+            <button id="exportListBtn" class="btn primary small" type="button">导出</button>
+            <button id="addRowBtn" class="btn ghost small" type="button">+ Add Row</button>
+          </div>
         </div>
 
         <div class="batch-table-wrap">
@@ -194,18 +176,6 @@
           </table>
         </div>
 
-        <div class="actions">
-          <button id="startBtn" class="btn primary">Start</button>
-          <button id="cancelBtn" class="btn ghost" disabled>Cancel</button>
-        </div>
-      </div>
-
-      <div class="card log">
-        <div class="log-header">
-          <h2>Logs</h2>
-          <button id="clearLogBtn" class="btn ghost small" type="button">Clear</button>
-        </div>
-        <pre id="logOutput"></pre>
       </div>
     </section>
   </main>

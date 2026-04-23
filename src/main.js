@@ -1,5 +1,6 @@
 const { app, BrowserWindow, dialog, ipcMain, session, screen } = require('electron');
 const path = require('path');
+const fs = require('fs/promises');
 const { DownloadJob, deriveVideoId } = require('./core/downloader');
 const { CATALOG_SCRIPT, PLAY_URL_SCRIPT } = require('./core/xiaoe-parser');
 
@@ -16,6 +17,7 @@ function createWindow() {
     minWidth: 960,
     minHeight: 680,
     backgroundColor: '#f6efe4',
+    autoHideMenuBar: true,
     webPreferences: {
       contextIsolation: true,
       preload: path.join(__dirname, 'preload.js'),
@@ -95,6 +97,12 @@ ipcMain.handle('select-output-root', async () => {
   });
   if (result.canceled || result.filePaths.length === 0) return null;
   return result.filePaths[0];
+});
+
+ipcMain.handle('export-download-list', async (_event, { content }) => {
+  const filePath = path.join(app.getPath('downloads'), 'download-list.txt');
+  await fs.writeFile(filePath, content || '', 'utf8');
+  return { ok: true, filePath };
 });
 
 // ─── XiaoE Login ───
@@ -302,8 +310,6 @@ ipcMain.handle('parse-course', async (_event, { courseUrl }) => {
   const queue = [];
   const visitedContainerPages = new Set();
   let mediaDrilldownSkipped = 0;
-  const containerDrilldownLimit = 3;
-  let drilldownLimitHit = false;
 
   const enqueueCatalogItems = (items, depth, parentTitle) => {
     if (!Array.isArray(items)) return;
@@ -341,14 +347,6 @@ ipcMain.handle('parse-course', async (_event, { courseUrl }) => {
     }
 
     if (!item.url || !isContainerItem(item) || visitedContainerPages.has(item.url) || item.depth >= 4) {
-      continue;
-    }
-
-    if (visitedContainerPages.size >= containerDrilldownLimit) {
-      if (!drilldownLimitHit) {
-        drilldownLimitHit = true;
-        sendToRenderer('parse-log', `已命中调试限制：只下钻前 ${containerDrilldownLimit} 个目录容器，后续容器已跳过。`);
-      }
       continue;
     }
 

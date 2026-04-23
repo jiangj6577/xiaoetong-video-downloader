@@ -24,12 +24,18 @@ const CATALOG_SCRIPT = `(async () => {
   await sleep(2000);
 
   async function expandAllSections() {
-    for (var round = 0; round < 6; round++) {
+    for (var round = 0; round < 10; round++) {
       var clicked = 0;
       var nodes = document.querySelectorAll('span, div, p, button');
       for (var ni = 0; ni < nodes.length; ni++) {
         var text = (nodes[ni].textContent || '').trim();
-        if ((text === '展开' || text === '展开更多' || text === '点击加载更多' || text === '加载更多') && nodes[ni].clientHeight > 0) {
+        if ((text === '展开'
+          || text === '展开更多'
+          || text === '点击加载更多'
+          || text === '加载更多'
+          || text === '查看更多'
+          || text === '查看更多')
+          && nodes[ni].clientHeight > 0) {
           try {
             nodes[ni].click();
             clicked++;
@@ -43,7 +49,7 @@ const CATALOG_SCRIPT = `(async () => {
 
   // Scroll to load all lazy-loaded items
   var prevScrollHeight = 0;
-  for (var sc = 0; sc < 30; sc++) {
+  for (var sc = 0; sc < 40; sc++) {
     window.scrollTo(0, 999999);
     var scrollers = document.querySelectorAll('.scroll-view, .list-wrap, .scroller, #app');
     for (var si = 0; si < scrollers.length; si++) {
@@ -51,16 +57,17 @@ const CATALOG_SCRIPT = `(async () => {
         scrollers[si].scrollTop = scrollers[si].scrollHeight;
       }
     }
-    await sleep(800);
+    await sleep(1000);
 
     await expandAllSections();
 
-    var h = document.body.scrollHeight;
-    if (sc > 3 && h === prevScrollHeight) break;
+    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    var loadDone = document.body && /已加载完成/.test(document.body.innerText || '');
+    if (sc > 5 && h === prevScrollHeight && loadDone) break;
     prevScrollHeight = h;
   }
   await expandAllSections();
-  await sleep(1000);
+  await sleep(1500);
 
   var el = document.querySelector('#app');
   var store = (el && el.__vue__) ? el.__vue__.$store : null;
@@ -384,7 +391,7 @@ const PLAY_URL_SCRIPT = `(async () => {
       debug.detail_video_info_keys = safeKeys(vi);
       debug.detail_candidates = collectCandidateUrls(detailData);
       debug.detail_snippet = safeSnippet(detailData);
-      title = vi.file_name || title;
+      title = title || vi.file_name || '';
       duration = vi.video_length || 0;
       var playSign = vi.play_sign || '';
       if (!playSign) {

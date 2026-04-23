@@ -70,9 +70,10 @@ body {
 
 .app {
   position: relative;
-  padding: 32px 40px 48px;
-  max-width: 1560px;
-  margin: 0 auto;
+  width: 100%;
+  padding: 16px 16px 40px;
+  max-width: none;
+  margin: 0;
   animation: rise 0.7s ease-out;
 }
 
@@ -170,19 +171,8 @@ h2 {
   gap: 16px;
 }
 
-.card.log {
-  grid-column: 1 / -1;
-  max-height: 320px;
-}
-
 .common-params-card {
   grid-column: 1 / -1;
-}
-
-.log-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .field {
@@ -315,11 +305,16 @@ pre {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+}
+
+.batch-table-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .batch-table-wrap {
-  max-height: 260px;
-  overflow-y: auto;
   border: 1px solid var(--border);
   border-radius: 12px;
 }

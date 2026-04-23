@@ -3,6 +3,7 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('api', {
   getDefaultOutputRoot: () => ipcRenderer.invoke('get-default-output-root'),
   selectOutputRoot: () => ipcRenderer.invoke('select-output-root'),
+  exportDownloadList: (payload) => ipcRenderer.invoke('export-download-list', payload),
   startDownload: (payload) => ipcRenderer.invoke('start-download', payload),
   startBatchDownload: (payload) => ipcRenderer.invoke('start-batch-download', payload),
   cancelDownload: () => ipcRenderer.invoke('cancel-download'),

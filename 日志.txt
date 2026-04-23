@@ -1,40 +1,160 @@
 ```text
-22:06:54  开始解析: https://app8xptaoyb8424.h5.xet.citv.cn/p/course/big_column/p_643534c4e4b0cf39e6ba0f39
-22:06:54  正在打开课程页面...
-22:06:55  页面已加载，等待渲染完成...
-22:06:58  自动获取到 userId: u_65537b3b110d2_jTCDP5hAxG
-22:06:58  已自动填入 userId: u_65537b3b110d2_jTCDP5hAxG
-22:06:58  正在解析课程目录（自动滚动加载中）...
-22:07:07  下钻目录 [1] 学习须知
-22:07:17    子目录返回 1 项
-22:07:17  下钻目录 [1] 各地区主流麻将规则讲解
-22:07:27    子目录返回 1 项
-22:07:27  下钻目录 [1] 拆搭专题讲解
-22:07:37    子目录返回 4 项
-22:07:37  已命中调试限制：只下钻前 3 个目录容器，后续容器已跳过。
-22:07:37  目录解析完成！共发现 18 节条目，其中 6 节音视频。
-22:07:37  下钻容器页数量: 3
-22:07:37  已识别媒体并跳过继续下钻: 6
-22:07:37  目录类型统计: {"专栏":12,"视频":6}
-22:07:37  目录样本 1: title=学习须知 | type=专栏 | rawType=6 | resourceId=p_643538efe4b0b0bc2bd5625f | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTM4ZWZlNGIwYjBiYzJiZDU2MjVmIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTM4ZWZlNGIwYjBiYzJiZDU2MjVmIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
-22:07:37  目录样本 2: title=各地区主流麻将规则讲解 | type=专栏 | rawType=6 | resourceId=p_67879a28e4b0694ca0499143 | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjc4NzlhMjhlNGIwNjk0Y2EwNDk5MTQzIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjc4NzlhMjhlNGIwNjk0Y2EwNDk5MTQzIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
-22:07:37  目录样本 3: title=拆搭专题讲解 | type=专栏 | rawType=6 | resourceId=p_664dc2c2e4b0694c981350fc | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjY0ZGMyYzJlNGIwNjk0Yzk4MTM1MGZjIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjY0ZGMyYzJlNGIwNjk0Yzk4MTM1MGZjIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
-22:07:37  目录样本 4: title=第一章 基础篇 | type=专栏 | rawType=6 | resourceId=p_64353d0ce4b0f2aa7dda75ca | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTNkMGNlNGIwZjJhYTdkZGE3NWNhIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTNkMGNlNGIwZjJhYTdkZGE3NWNhIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
-22:07:37  目录样本 5: title=第二章 进阶篇 | type=专栏 | rawType=6 | resourceId=p_643901f4e4b0b2d1c407cc80 | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzOTAxZjRlNGIwYjJkMWM0MDdjYzgwIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzOTAxZjRlNGIwYjJkMWM0MDdjYzgwIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
-22:07:37  跳过样本 1: reason=unrecognized_media_type | title=学习须知 | type=专栏 | rawType=6 | resourceId=p_643538efe4b0b0bc2bd5625f | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTM4ZWZlNGIwYjBiYzJiZDU2MjVmIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTM4ZWZlNGIwYjBiYzJiZDU2MjVmIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
-22:07:37  跳过样本 2: reason=unrecognized_media_type | title=各地区主流麻将规则讲解 | type=专栏 | rawType=6 | resourceId=p_67879a28e4b0694ca0499143 | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjc4NzlhMjhlNGIwNjk0Y2EwNDk5MTQzIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjc4NzlhMjhlNGIwNjk0Y2EwNDk5MTQzIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
-22:07:37  跳过样本 3: reason=unrecognized_media_type | title=拆搭专题讲解 | type=专栏 | rawType=6 | resourceId=p_664dc2c2e4b0694c981350fc | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjY0ZGMyYzJlNGIwNjk0Yzk4MTM1MGZjIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjY0ZGMyYzJlNGIwNjk0Yzk4MTM1MGZjIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
-22:07:37  跳过样本 4: reason=unrecognized_media_type | title=第一章 基础篇 | type=专栏 | rawType=6 | resourceId=p_64353d0ce4b0f2aa7dda75ca | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTNkMGNlNGIwZjJhYTdkZGE3NWNhIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTNkMGNlNGIwZjJhYTdkZGE3NWNhIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
-22:07:37  跳过样本 5: reason=unrecognized_media_type | title=第二章 进阶篇 | type=专栏 | rawType=6 | resourceId=p_643901f4e4b0b2d1c407cc80 | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzOTAxZjRlNGIwYjJkMWM0MDdjYzgwIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzOTAxZjRlNGIwYjJkMWM0MDdjYzgwIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
-22:07:37  开始逐个提取 m3u8 播放地址...
-22:07:37  [1/6] 正在提取: 学习须知
-22:07:59    ✗ 未获取到 m3u8 (可能为图文、权限不足或页面结构不同)
-22:07:59    调试信息: {"title":"麻将0（1）.mp4","resource_id":"v_643539b4e4b09d72378c71ec","m3u8_url":"","duration_sec":251,"method":"","debug":{"product_id":"p_643538efe4b0b0bc2bd5625f","app_id":"app8xptaoyb8424","resource_type":0,"has_play_sign":true,"play_data_code":"","detail_code":"","detail_error":"","play_error":"","host":"app8xptaoyb8424.h5.xiaoeknow.com","detail_keys":["config_data","video_urls","only_h5_play","jump_h5_url","jump_mini_program_url","payment_url","video_player_type","is_auto_play","is_try","product_try_info","last_study_time","user_last_process_time"],"detail_video_info_keys":["app_id","resource_id","video_length","file_name","video_audio_url","patch_img_url","patch_img_url_compressed","can_select","is_drm","is_transcode","material_app_id","play_sign"],"play_data_keys":["O35I7kFGhMmRNDG55lXFfjej9X80dF_PZ-cljxtBJLnGHqKvT-sfE3zCdTLAmAIlVU5vG85g5HwxKcaU8dbW46L2-ZZsVPs36c2N5n088S4"],"detail_candidates":["https://wechatapppro-1252524126.cos.ap-shanghai.myqcloud.com/app8xptaoyb8424_v_643539b4e4b09d72378c71ec_qr_code.jpg","https://v-tos-k.xiaoeknow.com/9764a7a5vodtransgzp1252524126/631aef7e243791581376686454/v.f1010.mp3?sign=03e854762d6c93191ee0ee76d2143951&t=69e97eef&us=rfZFNGoMrm","https://wechatapppro-1252524126.file.myqcloud.com/app8xptaoyb8424/image/b_u_63d8e2a33b0c2_hMuNPLJD/lgc4q8lb0usl.jpg"],"play_candidates":["https://v-tos-k.xiaoeknow.com/9764a7a5vodtransgzp1252524126/631aef7e243791581376686454/drm/v.f421220.m3u8?sign=e9bb4e94a96326a60dac7268c556621e&t=69e97eef&us=czKcCxpAuV","https://v-tos-k.xiaoeknow.com","https://v-tos-k.xiaoeknow.com/9764a7a5vodtransgzp1252524126/631aef7e243791581376686454/v.f1010.mp3?sign=b9b2a7f888759e92c2c4718b98917377&t=69e97eef&us=LYULrIYsbi"],"perf_candidates":["https://v-tos-k.xiaoeknow.com/9764a7a5vodtransgzp1252524126/631aef7e243791581376686454/drm/v.f421220_0.ts?end=9888847&start=9750096&type=mpegts&sign=025d0ec99a689379af37a8b1aedff6b0&t=69e97eea&us=WxgHLbXJsS","https://app8xptaoyb8424.h5.xiaoeknow.com/xe.material-center.play-monitor/playInfo.feedback","https://v-tos-k.xiaoeknow.com/9764a7a5vodtransgzp1252524126/631aef7e243791581376686454/drm/v.f421220_0.ts?end=6888111&start=6751424&type=mpegts&sign=025d0ec99a689379af37a8b1aedff6b0&t=69e97eea&us=WxgHLbXJsS","https://v-tos-k.xiaoeknow.com/9764a7a5vodtransgzp1252524126/631aef7e243791581376686454/drm/v.f421220_0.ts?end=7018223&start=6888112&type=mpegts&sign=025d0ec99a689379af37a8b1aedff6b0&t=69e97eea&us=WxgHLbXJsS","https://v-tos-k.xiaoeknow.com/9764a7a5vodtransgzp1252524126/631aef7e243791581376686454/drm/v.f421220_0.ts?end=7150591&start=7018224&type=mpegts&sign=025d0ec99a689379af37a8b1aedff6b0&t=69e97eea&us=WxgHLbXJsS"],"detail_snippet":"{\"config_data\":{\"1\":{\"config_name\":\"跑马灯\",\"is_open\":1,\"config_type\":1},\"2\":{\"config_name\":\"防拖拽\",\"is_open\":0,\"config_type\":2}},\"video_urls\":\"W$siZGVmaW5pdGlvbl9uYW@lIjoiXHU5YWQ%XHU#ZTA@IiwiZGVmaW5pdGlvbl9wIjoiNzIwUCIsInVybCI6Imh0dHBzOlwvXC9#LXRvcy@rLnhpYW9la#5vdy5jb#@cLzk$NjRhN#E@d...","play_snippet":"{\"O35I7kFGhMmRNDG55lXFfjej9X80dF_PZ-cljxtBJLnGHqKvT-sfE3zCdTLAmAIlVU5vG85g5HwxKcaU8dbW46L2-ZZsVPs36c2N5n088S4\":{\"support_list\":[\"720p_hls\",\"mp3\"],\"default_play\":\"720p_hls\",\"play_list\":{\"720p_hls\":{\"desc\":\"720p\",\"encrypt_type\":\"normal\",\"is_support\":true,\"play_url\":\"https://v-tos-k..."}}
-22:07:59  [2/6] 正在提取: 各地区麻将规则介绍
-22:08:21    ✗ 未获取到 m3u8 (可能为图文、权限不足或页面结构不同)
-22:08:21    调试信息: {"title":"麻将规则.mp4","resource_id":"v_67879a74e4b0694c5a81e23d","m3u8_url":"","duration_sec":733,"method":"","debug":{"product_id":"p_67879a28e4b0694ca0499143","app_id":"app8xptaoyb8424","resource_type":0,"has_play_sign":true,"play_data_code":"","detail_code":"","detail_error":"","play_error":"","host":"app8xptaoyb8424.h5.xiaoeknow.com","detail_keys":["config_data","video_urls","only_h5_play","jump_h5_url","jump_mini_program_url","payment_url","video_player_type","is_auto_play","is_try","product_try_info","last_study_time","user_last_process_time"],"detail_video_info_keys":["app_id","resource_id","video_length","file_name","video_audio_url","patch_img_url","patch_img_url_compressed","can_select","is_drm","is_transcode","material_app_id","play_sign"],"play_data_keys":["O35I7kFGhMmRNDG55lXFfra3_FGvMG44-JnrgqreF3XbbhufqUMD_gCMLOeOW0Udgrywwxkhu-sAoNEBYWS_mZXy7AHzcU-crzfboAdSPNE"],"detail_candidates":["https://wechatapppro-1252524126.cos.ap-shanghai.myqcloud.com/app8xptaoyb8424_v_67879a74e4b0694c5a81e23d_qr_code.jpg","https://c-vod-hw-k.xiaoeknow.com/asset/e3a22428398f0ed351631696a45344b4/89ca464d897b3af600268b71516e1753.mp3?sign=2601704d17778cf89a31ee8eeef666b6&t=69e97f05&us=sWXobOXxWI","https://c-vod-hw-k.xiaoeknow.com/asset/e555c511b79ddc7b4c39a95493635ec9/cover/Cover0.jpg?sign=7b54ae0b6dd2e5591eeeb23147218218&t=67884643&us=UfqkPwmZQF"],"play_candidates":["https://c-vod-hw-k.xiaoeknow.com/asset/158b87e81ec5aa2e9c1e3216e7fba28b/271eeb44f2ec3c6611e4c59635f67885.m3u8?sign=e835493ac0a78a8fb7ae2371bfdec29b&t=69e97f05&us=mTslRCoYAe","https://c-vod-hw-k.xiaoeknow.com","https://c-vod-hw-k.xiaoeknow.com/asset/e3a22428398f0ed351631696a45344b4/89ca464d897b3af600268b71516e1753.mp3?sign=31d8e44728dfef194368299fd9fd710d&t=69e97f05&us=qKhTPmTIsW"],"perf_candidates":["https://app8xptaoyb8424.h5.xiaoeknow.com/xe.material-center.play-monitor/playInfo.feedback"],"detail_snippet":"{\"config_data\":{\"1\":{\"config_name\":\"跑马灯\",\"is_open\":1,\"config_type\":1},\"2\":{\"config_name\":\"防拖拽\",\"is_open\":0,\"config_type\":2}},\"video_urls\":\"W$siZGVmaW5pdGlvbl9uYW@lIjoiXHU5YWQ%XHU#ZTA@IiwiZGVmaW5pdGlvbl9wIjoiNzIwUCIsInVybCI6Imh0dHBzOlwvXC9jLXZvZC@ody@rLnhpYW9la#5vdy5jb#@cL#Fzc#V0X...","play_snippet":"{\"O35I7kFGhMmRNDG55lXFfra3_FGvMG44-JnrgqreF3XbbhufqUMD_gCMLOeOW0Udgrywwxkhu-sAoNEBYWS_mZXy7AHzcU-crzfboAdSPNE\":{\"support_list\":[\"720p_hls\",\"mp3\"],\"default_play\":\"720p_hls\",\"play_list\":{\"720p_hls\":{\"desc\":\"720p\",\"encrypt_type\":\"normal\",\"is_support\":true,\"play_url\":\"https://c-vod-h..."}}
-22:08:21  [3/6] 正在提取: 刀哥讲拆搭
-22:08:42    ✗ 未获取到 m3u8 (可能为图文、权限不足或页面结构不同)
-22:08:42    调试信息: {"title":"_刀哥讲拆搭子_new_file(1)_x264.mp4","resource_id":"v_664dc301e4b0694c98135119","m3u8_url":"","duration_sec":3000,"method":"","debug":{"product_id":"p_664dc2c2e4b0694c981350fc","app_id":"app8xptaoyb8424","resource_type":0,"has_play_sign":true,"play_data_code":"","detail_code":"","detail_error":"","play_error":"","host":"app8xptaoyb8424.h5.xiaoeknow.com","detail_keys":["config_data","video_urls","only_h5_play","jump_h5_url","jump_mini_program_url","payment_url","video_player_type","is_auto_play","is_try","product_try_info","last_study_time","user_last_process_time"],"detail_video_info_keys":["app_id","resource_id","video_length","file_name","video_audio_url","patch_img_url","patch_img_url_compressed","can_select","is_drm","is_transcode","material_app_id","play_sign"],"play_data_keys":["O35I7kFGhMmRNDG55lXFfpm4JJDMAx5UgTNWLE_NZKQwLeA4-TsgFYzYli8P5Mjr4c-omtR48Gpsf41NPcKN-KS_ehJ3z_PD0DaufbbYlFM"],"detail_candidates":["https://wechatapppro-1252524126.cos.ap-shanghai.myqcloud.com/app8xptaoyb8424_v_664dc301e4b0694c98135119_qr_code.jpg","https://v-vod-k.xiaoeknow.com/cf91efe589a64c529f999483f26cf034/app8xptaoyb8424/video/b_u_63e0a165b1207_ef8W4ln9/m7hkorme0r38/main.mp3?sign=2c967d04ddd5795570a840005270662f&t=69e97f1b&us=eFnLfAoSoq","https://cover-v-vod.xiaoeknow.com/vod-migrate-tech/owd70Y2szEhDuYgmDA3evaZsI34BJ6EFoQqXOp~tplv-vod-obj.jpg"],"play_candidates":["https://v-vod-k.xiaoeknow.com/a8307e36f7a64aeeae086cc157bb356b/app8xptaoyb8424/video/b_u_63e0a165b1207_ef8W4ln9/m7hkorme0r38/drm/main.m3u8?sign=adefd38cfecd4a422c91e514843c8e39&t=69e97f1b&us=AxvgwEDirZ","https://v-vod-k.xiaoeknow.com","https://v-vod-k.xiaoeknow.com/cf91efe589a64c529f999483f26cf034/app8xptaoyb8424/video/b_u_63e0a165b1207_ef8W4ln9/m7hkorme0r38/main.mp3?sign=ef679d0cdc142c698f10fa10c2b8599e&t=69e97f1b&us=lEkUCmlWpR"],"perf_candidates":["https://v-vod-k.xiaoeknow.com/a8307e36f7a64aeeae086cc157bb356b/app8xptaoyb8424/video/b_u_63e0a165b1207_ef8W4ln9/m7hkorme0r38/drm/main_29.ts?sign=2e3eaffc97516d3cc11121e433dd8644&t=69e97f16&us=eCApSMBQVs","https://app8xptaoyb8424.h5.xiaoeknow.com/xe.material-center.play-monitor/playInfo.feedback","https://v-vod-k.xiaoeknow.com/a8307e36f7a64aeeae086cc157bb356b/app8xptaoyb8424/video/b_u_63e0a165b1207_ef8W4ln9/m7hkorme0r38/drm/main_7.ts?sign=2e3eaffc97516d3cc11121e433dd8644&t=69e97f16&us=eCApSMBQVs","https://v-vod-k.xiaoeknow.com/a8307e36f7a64aeeae086cc157bb356b/app8xptaoyb8424/video/b_u_63e0a165b1207_ef8W4ln9/m7hkorme0r38/drm/main_8.ts?sign=2e3eaffc97516d3cc11121e433dd8644&t=69e97f16&us=eCApSMBQVs"],"detail_snippet":"{\"config_data\":{\"1\":{\"config_name\":\"跑马灯\",\"is_open\":1,\"config_type\":1},\"2\":{\"config_name\":\"防拖拽\",\"is_open\":0,\"config_type\":2}},\"video_urls\":\"W$siZGVmaW5pdGlvbl9uYW@lIjoiXHU5YWQ%XHU#ZTA@IiwiZGVmaW5pdGlvbl9wIjoiNzIwUCIsInVybCI6Imh0dHBzOlwvXC9#LXZvZC@rLnhpYW9la#5vdy5jb#@cL#E%MzA$ZTM#Z...","play_snippet":"{\"O35I7kFGhMmRNDG55lXFfpm4JJDMAx5UgTNWLE_NZKQwLeA4-TsgFYzYli8P5Mjr4c-omtR48Gpsf41NPcKN-KS_ehJ3z_PD0DaufbbYlFM\":{\"support_list\":[\"720p_hls\",\"mp3\"],\"default_play\":\"720p_hls\",\"play_list\":{\"720p_hls\":{\"desc\":\"720p\",\"encrypt_type\":\"normal\",\"is_support\":true,\"play_url\":\"https://v-vod-k..."}}
-22:08:42  [4/6] 正在提取: 宝哥讲拆搭
+00:35:16  开始解析: https://app8xptaoyb8424.h5.xet.citv.cn/p/course/big_column/p_643534c4e4b0cf39e6ba0f39
+00:35:16  正在打开课程页面...
+00:35:17  页面已加载，等待渲染完成...
+00:35:20  自动获取到 userId: u_65537b3b110d2_jTCDP5hAxG
+00:35:20  已自动填入 userId: u_65537b3b110d2_jTCDP5hAxG
+00:35:20  正在解析课程目录（自动滚动加载中）...
+00:35:33  下钻目录 [1] 学习须知
+00:35:47    子目录返回 1 项
+00:35:47  下钻目录 [1] 各地区主流麻将规则讲解
+00:36:01    子目录返回 1 项
+00:36:01  下钻目录 [1] 拆搭专题讲解
+00:36:15    子目录返回 4 项
+00:36:15  下钻目录 [1] 第一章 基础篇
+00:36:29    子目录返回 8 项
+00:36:29  下钻目录 [1] 第二章 进阶篇
+00:36:43    子目录返回 8 项
+00:36:43  下钻目录 [1] 第三章 高手篇
+00:36:53    子目录返回 7 项
+00:36:53  下钻目录 [1] 第四章 加餐篇
+00:37:03    子目录返回 6 项
+00:37:03  下钻目录 [1] 第五章 技术篇
+00:37:14    子目录返回 24 项
+00:37:14  目录解析完成！共发现 67 节条目，其中 59 节音视频。
+00:37:14  下钻容器页数量: 8
+00:37:14  已识别媒体并跳过继续下钻: 59
+00:37:14  目录类型统计: {"专栏":8,"视频":59}
+00:37:14  目录样本 1: title=学习须知 | type=专栏 | rawType=6 | resourceId=p_643538efe4b0b0bc2bd5625f | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTM4ZWZlNGIwYjBiYzJiZDU2MjVmIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTM4ZWZlNGIwYjBiYzJiZDU2MjVmIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
+00:37:14  目录样本 2: title=各地区主流麻将规则讲解 | type=专栏 | rawType=6 | resourceId=p_67879a28e4b0694ca0499143 | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjc4NzlhMjhlNGIwNjk0Y2EwNDk5MTQzIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjc4NzlhMjhlNGIwNjk0Y2EwNDk5MTQzIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
+00:37:14  目录样本 3: title=拆搭专题讲解 | type=专栏 | rawType=6 | resourceId=p_664dc2c2e4b0694c981350fc | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjY0ZGMyYzJlNGIwNjk0Yzk4MTM1MGZjIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjY0ZGMyYzJlNGIwNjk0Yzk4MTM1MGZjIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
+00:37:14  目录样本 4: title=第一章 基础篇 | type=专栏 | rawType=6 | resourceId=p_64353d0ce4b0f2aa7dda75ca | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTNkMGNlNGIwZjJhYTdkZGE3NWNhIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTNkMGNlNGIwZjJhYTdkZGE3NWNhIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
+00:37:14  目录样本 5: title=第二章 进阶篇 | type=专栏 | rawType=6 | resourceId=p_643901f4e4b0b2d1c407cc80 | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzOTAxZjRlNGIwYjJkMWM0MDdjYzgwIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzOTAxZjRlNGIwYjJkMWM0MDdjYzgwIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
+00:37:14  跳过样本 1: reason=unrecognized_media_type | title=学习须知 | type=专栏 | rawType=6 | resourceId=p_643538efe4b0b0bc2bd5625f | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTM4ZWZlNGIwYjBiYzJiZDU2MjVmIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTM4ZWZlNGIwYjBiYzJiZDU2MjVmIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
+00:37:14  跳过样本 2: reason=unrecognized_media_type | title=各地区主流麻将规则讲解 | type=专栏 | rawType=6 | resourceId=p_67879a28e4b0694ca0499143 | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjc4NzlhMjhlNGIwNjk0Y2EwNDk5MTQzIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjc4NzlhMjhlNGIwNjk0Y2EwNDk5MTQzIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
+00:37:14  跳过样本 3: reason=unrecognized_media_type | title=拆搭专题讲解 | type=专栏 | rawType=6 | resourceId=p_664dc2c2e4b0694c981350fc | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjY0ZGMyYzJlNGIwNjk0Yzk4MTM1MGZjIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjY0ZGMyYzJlNGIwNjk0Yzk4MTM1MGZjIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
+00:37:14  跳过样本 4: reason=unrecognized_media_type | title=第一章 基础篇 | type=专栏 | rawType=6 | resourceId=p_64353d0ce4b0f2aa7dda75ca | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTNkMGNlNGIwZjJhYTdkZGE3NWNhIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzNTNkMGNlNGIwZjJhYTdkZGE3NWNhIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
+00:37:14  跳过样本 5: reason=unrecognized_media_type | title=第二章 进阶篇 | type=专栏 | rawType=6 | resourceId=p_643901f4e4b0b2d1c407cc80 | url=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzOTAxZjRlNGIwYjJkMWM0MDdjYzgwIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0 | rawUrl=https://app8xptaoyb8424.h5.xiaoeknow.com/content_page/eyJ0eXBlIjoyLCJyZXNvdXJjZV90eXBlIjo2LCJyZXNvdXJjZV9pZCI6InBfNjQzOTAxZjRlNGIwYjJkMWM0MDdjYzgwIiwicHJvZHVjdF9pZCI6InBfNjQzNTM0YzRlNGIwY2YzOWU2YmEwZjM5IiwiYXBwX2lkIjoiYXBwOHhwdGFveWI4NDI0In0
+00:37:14  开始逐个提取 m3u8 播放地址...
+00:37:14  [1/59] 正在提取: 学习须知
+00:37:20    ✓ 成功 (api_direct, 251s)
+00:37:20  [2/59] 正在提取: 各地区麻将规则介绍
+00:37:26    ✓ 成功 (api_direct, 733s)
+00:37:26  [3/59] 正在提取: 刀哥讲拆搭
+00:37:33    ✓ 成功 (api_direct, 3000s)
+00:37:33  [4/59] 正在提取: 宝哥讲拆搭
+00:37:39    ✓ 成功 (api_direct, 1172s)
+00:37:39  [5/59] 正在提取: 大圣讲拆搭
+00:37:45    ✓ 成功 (api_direct, 2487s)
+00:37:45  [6/59] 正在提取: 老富讲拆搭
+00:37:51    ✓ 成功 (api_direct, 2083s)
+00:37:51  [7/59] 正在提取: 1.麻将认知
+00:37:58    ✓ 成功 (api_direct, 205s)
+00:37:58  [8/59] 正在提取: 2.专业术语
+00:38:04    ✓ 成功 (api_direct, 215s)
+00:38:04  [9/59] 正在提取: 3.序数牌的特征
+00:38:10    ✓ 成功 (api_direct, 445s)
+00:38:10  [10/59] 正在提取: 4.各类搭子的价值
+00:38:17    ✓ 成功 (api_direct, 332s)
+00:38:17  [11/59] 正在提取: 5.四连牌型的价值
+00:38:23    ✓ 成功 (api_direct, 299s)
+00:38:23  [12/59] 正在提取: 6.对子的价值
+00:38:29    ✓ 成功 (api_direct, 322s)
+00:38:29  [13/59] 正在提取: 7.牌面价值的判断
+00:38:36    ✓ 成功 (api_direct, 329s)
+00:38:36  [14/59] 正在提取: 8.牌局分段怎么区分
+00:38:43    ✓ 成功 (api_direct, 306s)
+00:38:43  [15/59] 正在提取: 15.起手定攻防
+00:38:50    ✓ 成功 (api_direct, 395s)
+00:38:50  [16/59] 正在提取: 16.猜牌技巧
+00:38:56    ✓ 成功 (api_direct, 2266s)
+00:38:56  [17/59] 正在提取: 17.配牌几率
+00:39:03    ✓ 成功 (api_direct, 342s)
+00:39:03  [18/59] 正在提取: 18.如何识别对手有没有听牌
+00:39:10    ✓ 成功 (api_direct, 354s)
+00:39:10  [19/59] 正在提取: 19.如何防止别人猜测你的手牌
+00:39:17    ✓ 成功 (api_direct, 182s)
+00:39:17  [20/59] 正在提取: 20.打衍牌的技术
+00:39:24    ✓ 成功 (api_direct, 470s)
+00:39:24  [21/59] 正在提取: 21.打生张的技术
+00:39:31    ✓ 成功 (api_direct, 303s)
+00:39:31  [22/59] 正在提取: 22.单吊的技术
+00:39:37    ✓ 成功 (api_direct, 324s)
+00:39:37  [23/59] 正在提取: 26.一直点炮怎么打
+00:39:44    ✓ 成功 (api_direct, 414s)
+00:39:44  [24/59] 正在提取: 27.牌风不顺怎么办
+00:39:51    ✓ 成功 (api_direct, 516s)
+00:39:51  [25/59] 正在提取: 28.碰牌战略
+00:39:58    ✓ 成功 (api_direct, 315s)
+00:39:58  [26/59] 正在提取: 29.牌流战略
+00:40:04    ✓ 成功 (api_direct, 2771s)
+00:40:04  [27/59] 正在提取: 30.麻将12圈基本战略
+00:40:11    ✓ 成功 (api_direct, 313s)
+00:40:11  [28/59] 正在提取: 31.位置战略
+00:40:18    ✓ 成功 (api_direct, 1214s)
+00:40:18  [29/59] 正在提取: 32.四面招雀碰牌战略
+00:40:24    ✓ 成功 (api_direct, 490s)
+00:40:24  [30/59] 正在提取: 33.如何识别作弊麻将机
+00:40:31    ✓ 成功 (api_direct, 498s)
+00:40:31  [31/59] 正在提取: 34.如何识别作弊暗号
+00:40:38    ✓ 成功 (api_direct, 143s)
+00:40:38  [32/59] 正在提取: 35.如何看清一色听牌
+00:40:45    ✓ 成功 (api_direct, 1021s)
+00:40:45  [33/59] 正在提取: 36.麻将口诀
+00:40:51    ✓ 成功 (api_direct, 851s)
+00:40:51  [34/59] 正在提取: 37.换三张技巧
+00:40:58    ✓ 成功 (api_direct, 111s)
+00:40:58  [35/59] 正在提取: 38.怎样保持心态
+00:41:05    ✓ 成功 (api_direct, 130s)
+00:41:05  [36/59] 正在提取: 39.摸到炮牌怎么办1
+00:41:11    ✓ 成功 (api_direct, 572s)
+00:41:11  [37/59] 正在提取: 40.摸到炮牌怎么办2
+00:41:17    ✓ 成功 (api_direct, 641s)
+00:41:17  [38/59] 正在提取: 41.打麻将听牌总是比别人慢
+00:41:24    ✓ 成功 (api_direct, 250s)
+00:41:24  [39/59] 正在提取: 42.如何做七对
+00:41:30    ✓ 成功 (api_direct, 396s)
+00:41:30  [40/59] 正在提取: 43.四人抬轿容易错的牌型
+00:41:36    ✓ 成功 (api_direct, 158s)
+00:41:36  [41/59] 正在提取: 44.川麻核心玩法技巧
+00:41:43    ✓ 成功 (api_direct, 849s)
+00:41:43  [42/59] 正在提取: 45.赖子托牌的技术
+00:41:49    ✓ 成功 (api_direct, 277s)
+00:41:49  [43/59] 正在提取: 46.麻将心态三要素
+00:41:55    ✓ 成功 (api_direct, 456s)
+00:41:55  [44/59] 正在提取: 47.长期最大几率打法
+00:42:01    ✓ 成功 (api_direct, 530s)
+00:42:01  [45/59] 正在提取: 48. 逆风局打法核心
+00:42:08    ✓ 成功 (api_direct, 329s)
+00:42:08  [46/59] 正在提取: 49.变化打法才能确保胜率
+00:42:14    ✓ 成功 (api_direct, 303s)
+00:42:14  [47/59] 正在提取: 50.慢速打法转变条件
+00:42:20    ✓ 成功 (api_direct, 226s)
+00:42:20  [48/59] 正在提取: 51.七种错误
+00:42:27    ✓ 成功 (api_direct, 254s)
+00:42:27  [49/59] 正在提取: 52. 打麻将做大牌的标准
+00:42:33    ✓ 成功 (api_direct, 445s)
+00:42:33  [50/59] 正在提取: 53. 炮牌的规律及如何处理
+00:42:39    ✓ 成功 (api_direct, 152s)
+00:42:39  [51/59] 正在提取: 54.扣牌和冲牌的尺寸把握
+00:42:46    ✓ 成功 (api_direct, 379s)
+00:42:46  [52/59] 正在提取: 55.听牌就点炮怎么办
+00:42:52    ✓ 成功 (api_direct, 318s)
+00:42:52  [53/59] 正在提取: 56.猜牌技巧的邻牌理论
+00:42:58    ✓ 成功 (api_direct, 375s)
+00:42:58  [54/59] 正在提取: 57.敌家早打5要什么
+00:43:05    ✓ 成功 (api_direct, 187s)
+00:43:05  [55/59] 正在提取: 58.敌家听牌打1要什么
+00:43:12    ✓ 成功 (api_direct, 142s)
+00:43:12  [56/59] 正在提取: 59.敌家听牌打3或者是7要什么
+00:43:19    ✓ 成功 (api_direct, 158s)
+00:43:19  [57/59] 正在提取: 60.你知道什么是危险对子牌吗
+00:43:26    ✓ 成功 (api_direct, 204s)
+00:43:26  [58/59] 正在提取: 61.什么是差5断牌法
+00:43:32    ✓ 成功 (api_direct, 210s)
+00:43:32  [59/59] 正在提取: 62.如何快速的看出我们手牌在几进听
+00:43:39    ✓ 成功 (api_direct, 207s)
+00:43:39  ✅ 已将 59 条 m3u8 地址自动填入下方下载表格！
+00:43:39  
+全部完成！成功提取 59/59 个 m3u8 地址。
 ```
