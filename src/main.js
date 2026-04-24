@@ -38,17 +38,24 @@ function sendToRenderer(channel, payload) {
 
 function inferMediaKind(item) {
   const type = String(item.type || '').trim();
-  if (type === '视频' || type === '音频' || type === '直播') return type;
+  if (type === '视频' || type === '音频' || type === '直播' || type === '图文') return type;
 
   const url = String(item.url || item.raw_url || '').toLowerCase();
   if (url.includes('/course/video/') || url.includes('.m3u8')) return '视频';
   if (url.includes('/course/audio/')) return '音频';
   if (url.includes('/course/alive/')) return '直播';
+  if (url.includes('/course/text/')) return '图文';
 
   const resourceId = String(item.resource_id || '').toLowerCase();
   if (resourceId.startsWith('v_')) return '视频';
   if (resourceId.startsWith('a_')) return '音频';
   if (resourceId.startsWith('l_')) return '直播';
+  if (resourceId.startsWith('i_')) return '图文';
+
+  // 默认将所有非专栏项目视为视频尝试提取，防止漏掉未知类型的视频
+  if (type !== '专栏' && type !== '大专栏' && !resourceId.startsWith('p_')) {
+    return '未知(尝试提取)';
+  }
 
   return '';
 }
@@ -91,6 +98,11 @@ ipcMain.handle('export-download-list', async (_event, { content }) => {
   await fs.writeFile(filePath, content || '', 'utf8');
   return { ok: true, filePath };
 });
+
+ipcMain.handle('get-default-export-path', async () => {
+  return path.join(app.getPath('downloads'), 'm3u8-list.txt');
+});
+
 
 // ─── XiaoE Login ───
 
@@ -243,7 +255,7 @@ ipcMain.handle('parse-course', async (_event, { courseUrl }) => {
   sendToRenderer('parse-log', '页面已加载，等待渲染完成...');
 
   // Wait for the page to fully render
-  await wait(3000);
+  await wait(1500);
 
   // Auto-extract userId from cookie / Vue store / pushData
   let userId = '';
@@ -285,7 +297,7 @@ ipcMain.handle('parse-course', async (_event, { courseUrl }) => {
     return { ok: false, error: err.message };
   }
 
-  if (!initialCatalog || initialCatalog.length === 0) {
+  if (!initialCatalog || (!Array.isArray(initialCatalog) && !initialCatalog.items)) {
     sendToRenderer('parse-log', '未找到任何课程内容，请确认已登录并拥有该课程权限。');
     return { ok: false, error: 'No episodes found.' };
   }
@@ -300,7 +312,25 @@ ipcMain.handle('parse-course', async (_event, { courseUrl }) => {
   const visitedContainerPages = new Set();
   let mediaDrilldownSkipped = 0;
 
-  const enqueueCatalogItems = (items, depth, parentTitle) => {
+  const enqueueCatalogItems = (catalogData, depth, parentTitle) => {
+    let items = [];
+    let expectedCount = 0;
+    
+    if (Array.isArray(catalogData)) {
+      items = catalogData;
+    } else if (catalogData && Array.isArray(catalogData.items)) {
+      items = catalogData.items;
+      expectedCount = catalogData.expectedCount || 0;
+    }
+
+    if (expectedCount > 0 && items.length < expectedCount) {
+      sendToRenderer('parse-log', `  ⚠ 警告: 页面提示已更新 ${expectedCount} 期，但实际仅解析到 ${items.length} 项。可能有部分项未完全加载或权限不足。`);
+    } else if (expectedCount > 0) {
+      sendToRenderer('parse-log', `  ✓ 目录数量核对通过: 提示 ${expectedCount} 期，实际解析 ${items.length} 项。`);
+    } else {
+      sendToRenderer('parse-log', `  ℹ 未在页面找到"已更新xx期"的文本标示，跳过期数核对。实际解析 ${items.length} 项。`);
+    }
+
     if (!Array.isArray(items)) return;
     items.forEach((item) => {
       const normalized = { ...item, depth, parent_title: parentTitle || '' };
@@ -346,8 +376,12 @@ ipcMain.handle('parse-course', async (_event, { courseUrl }) => {
       await parseWindow.loadURL(item.url);
       await wait(1200);
       const nestedCatalog = await parseWindow.webContents.executeJavaScript(CATALOG_SCRIPT);
-      sendToRenderer('parse-log', `  子目录返回 ${nestedCatalog && nestedCatalog.length ? nestedCatalog.length : 0} 项`);
-      if (nestedCatalog && nestedCatalog.length > 0) {
+      let nestedItemsCount = 0;
+      if (Array.isArray(nestedCatalog)) nestedItemsCount = nestedCatalog.length;
+      else if (nestedCatalog && Array.isArray(nestedCatalog.items)) nestedItemsCount = nestedCatalog.items.length;
+      
+      sendToRenderer('parse-log', `  子目录返回 ${nestedItemsCount} 项`);
+      if (nestedItemsCount > 0) {
         enqueueCatalogItems(nestedCatalog, item.depth + 1, item.title);
       }
     } catch (err) {
@@ -382,8 +416,8 @@ ipcMain.handle('parse-course', async (_event, { courseUrl }) => {
 
     try {
       await parseWindow.loadURL(item.url);
-      // Wait for the video player to initialize and request the m3u8
-      await new Promise((r) => setTimeout(r, 5000));
+      // Wait briefly for page to load, then execute parser script
+      await wait(500);
 
       const playInfo = await parseWindow.webContents.executeJavaScript(PLAY_URL_SCRIPT);
 

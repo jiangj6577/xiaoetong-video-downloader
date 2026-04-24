@@ -21,7 +21,7 @@ const CATALOG_SCRIPT = `(async () => {
       tabs[i].click(); break;
     }
   }
-  await sleep(2000);
+  await sleep(500);
 
   async function expandAllSections() {
     for (var round = 0; round < 10; round++) {
@@ -49,7 +49,8 @@ const CATALOG_SCRIPT = `(async () => {
 
   // Scroll to load all lazy-loaded items
   var prevScrollHeight = 0;
-  for (var sc = 0; sc < 40; sc++) {
+  var sameHeightCount = 0;
+  for (var sc = 0; sc < 20; sc++) {
     window.scrollTo(0, 999999);
     var scrollers = document.querySelectorAll('.scroll-view, .list-wrap, .scroller, #app');
     for (var si = 0; si < scrollers.length; si++) {
@@ -57,17 +58,23 @@ const CATALOG_SCRIPT = `(async () => {
         scrollers[si].scrollTop = scrollers[si].scrollHeight;
       }
     }
-    await sleep(1000);
+    await sleep(500);
 
     await expandAllSections();
 
     var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-    var loadDone = document.body && /已加载完成/.test(document.body.innerText || '');
-    if (sc > 5 && h === prevScrollHeight && loadDone) break;
+    var loadDone = document.body && /已加载完成|没有更多/.test(document.body.innerText || '');
+    
+    if (h === prevScrollHeight) {
+      sameHeightCount++;
+    } else {
+      sameHeightCount = 0;
+    }
+    if (loadDone || sameHeightCount >= 3) break;
     prevScrollHeight = h;
   }
   await expandAllSections();
-  await sleep(1500);
+  await sleep(1000);
 
   var el = document.querySelector('#app');
   var store = (el && el.__vue__) ? el.__vue__.$store : null;
@@ -113,10 +120,24 @@ const CATALOG_SCRIPT = `(async () => {
     return (urlPath && resourceId) ? origin + urlPath + resourceId + '?type=2' : '';
   }
 
+  // 提取已更新xx期（全局提取，适用于专栏和普通课程，增加重试机制确保页面渲染完成）
+  var expectedCount = 0;
+  for (var retry = 0; retry < 5; retry++) {
+    var textContent = document.documentElement.textContent || document.body.innerText || '';
+    // 兼容 "已更新 4 期", "共 4 节" 等多种常见表述
+    var expectedMatch = textContent.match(/(?:已更新|共包含|共)\s*(\d+)\s*[期节项讲个]/);
+    if (expectedMatch) {
+      expectedCount = parseInt(expectedMatch[1], 10);
+      break;
+    }
+    await sleep(400); // 如果没找到，稍微等待 Vue 渲染
+  }
+
   // ===== 专栏 / 大专栏 =====
   if (resourceType === 6 || resourceType === 8) {
     await expandAllSections();
     await sleep(1000);
+    
     var listData = [];
     var walkList = function(vm, depth) {
       if (!vm || depth > 6 || listData.length > 0) return;
@@ -150,20 +171,23 @@ const CATALOG_SCRIPT = `(async () => {
       }
     };
     walkList(el.__vue__, 0);
-    return listData;
+    return { items: listData, expectedCount: expectedCount };
   }
 
   // ===== 普通课程 =====
   var chapters = document.querySelectorAll('.chapter_box');
+  var expandedChapters = 0;
   for (var ci = 0; ci < chapters.length; ci++) {
     var vue = chapters[ci].__vue__;
     if (vue && typeof vue.getSecitonList === 'function' && (!vue.isShowSecitonsList || !vue.chapterChildren.length)) {
       if (vue.isShowSecitonsList) vue.isShowSecitonsList = false;
       try { vue.getSecitonList(); } catch(e) {}
-      await new Promise(function(r) { setTimeout(r, 1500); });
+      expandedChapters++;
     }
   }
-  await new Promise(function(r) { setTimeout(r, 3000); });
+  if (expandedChapters > 0) {
+    await new Promise(function(r) { setTimeout(r, 1500); });
+  }
 
   var result = [];
   chapters = document.querySelectorAll('.chapter_box');
@@ -180,15 +204,17 @@ const CATALOG_SCRIPT = `(async () => {
       var urlPath = {'图文':'/v1/course/text/','直播':'/v2/course/alive/','音频':'/v1/course/audio/','视频':'/v1/course/video/'}[inferredType];
       result.push({
         ch: cj + 1, chapter: chTitle, no: ck + 1,
-        title: child.chapter_title || child.resource_title || '',
+        title: child.resource_title || child.title || child.chapter_title || '',
         type: inferredType,
         raw_type: chType,
         resource_id: resId,
-        url: urlPath ? origin + urlPath + resId + '?type=2' : '',
+        url: buildLessonUrl(child, resId, inferredType),
+        raw_url: child.jump_url || child.h5_url || child.url || ''
       });
     }
   }
-  return result;
+
+  return { items: result, expectedCount: expectedCount };
 })()`;
 
 // ─── Play URL: extract m3u8 from a single lesson page ───

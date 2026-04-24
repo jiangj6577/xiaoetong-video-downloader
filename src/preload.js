@@ -2,6 +2,7 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('api', {
   exportDownloadList: (payload) => ipcRenderer.invoke('export-download-list', payload),
+  getDefaultExportPath: () => ipcRenderer.invoke('get-default-export-path'),
 
   // XiaoE login
   xiaoeLogin: (payload) => ipcRenderer.invoke('xiaoe-login', payload),

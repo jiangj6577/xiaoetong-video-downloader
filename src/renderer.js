@@ -221,11 +221,11 @@ function buildDownloadListExportText() {
   const items = getTableData();
   if (items.length === 0) return '';
 
-  const stripExtension = (name) => String(name || '').trim().replace(/\.[^./\\]+$/, '');
+  const stripExtension = (name) => String(name || '').trim();
 
   return items
     .map((item) => `${stripExtension(item.name)},${item.url}`)
-    .join('\n');
+    .join('\r\n');
 }
 
 els.parseBtn.addEventListener('click', async () => {
@@ -243,13 +243,17 @@ els.parseBtn.addEventListener('click', async () => {
   els.parseBtn.disabled = true;
   els.courseUrlInput.disabled = true;
 
+  // Clear existing M3U8 list
+  els.batchTableBody.innerHTML = '';
+  rowCounter = 0;
+
   appendParseLog(`开始解析: ${courseUrl}`);
 
   try {
     const result = await window.api.parseCourse({ courseUrl });
 
     if (result.ok && result.results && result.results.length > 0) {
-      // Clear existing rows
+      // Clear existing rows (already cleared above, but safe to keep)
       els.batchTableBody.innerHTML = '';
       rowCounter = 0;
 
@@ -279,6 +283,16 @@ els.parseBtn.addEventListener('click', async () => {
 // ─── Init ───
 
 async function init() {
+  try {
+    const defaultPath = await window.api.getDefaultExportPath();
+    if (els.exportPath) {
+      els.exportPath.value = defaultPath;
+      els.exportPath.title = defaultPath;
+    }
+  } catch (e) {
+    console.error('Failed to get default export path:', e);
+  }
+
   try {
     const loginState = await window.api.getXiaoeLoginStatus();
     const isLoggedIn = loginState && loginState.status === 'ok';

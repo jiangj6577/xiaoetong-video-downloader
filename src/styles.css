@@ -158,6 +158,10 @@ p { color: var(--text-secondary); line-height: 1.6; }
   gap: 24px;
 }
 
+.col-right {
+  min-width: 0; /* 防止内容撑破网格布局 */
+}
+
 /* ── Forms & Inputs ── */
 .input-group {
   display: flex;
@@ -209,6 +213,11 @@ input:focus {
   border: none;
   transition: all 0.2s;
   white-space: nowrap;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.96);
+  opacity: 0.8;
 }
 
 .btn-primary {
@@ -287,8 +296,7 @@ input:focus {
 .log-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 300px;
+  height: 380px; /* 设定固定高度，防止垂直方向布局突变 */
   border: 1px solid #333;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -318,33 +326,34 @@ input:focus {
 .terminal-log {
   flex: 1;
   background: transparent;
-  color: #d4d4d4;
+  color: #9da5b4; /* 降低纯白色的对比度，改为柔和的蓝灰色，减轻视觉疲劳 */
   padding: 12px;
   font-family: "SF Mono", "Menlo", monospace;
   font-size: 12px;
-  overflow-y: auto;
+  overflow: auto; /* 同时显示水平和垂直滚动条 */
+  white-space: pre; /* 禁止自动换行，以便出现水平滚动条 */
   margin: 0;
   border-radius: 0;
 }
 
 .progress-container {
   padding: 12px;
-  background: #fff;
-  border-bottom: 1px solid var(--border);
+  background: #252526; /* 将白色背景改为与控制台一致的深色背景 */
+  border-bottom: 1px solid #333;
 }
 .progress-bar-bg {
   height: 4px;
-  background: rgba(0, 122, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1); /* 深色背景下的进度槽 */
   border-radius: 2px;
   overflow: hidden;
   margin-bottom: 6px;
 }
 .progress-bar-fill {
   height: 100%;
-  background: var(--accent);
+  background: #4dabf7; /* 深色模式下更明亮的蓝色进度条 */
   transition: width 0.3s;
 }
-.progress-text { font-size: 11px; color: var(--accent); font-weight: 600; }
+.progress-text { font-size: 11px; color: #4dabf7; font-weight: 600; }
 
 /* ── Manual Guide ── */
 .guide-steps {
