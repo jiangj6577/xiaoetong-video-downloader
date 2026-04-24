@@ -1,0 +1,30 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Rounded Container -->
+  <rect width="1024" height="1024" rx="220" fill="url(#main_grad)"/>
+  
+  <!-- Subtle Inner Glow -->
+  <rect x="40" y="40" width="944" height="944" rx="180" stroke="white" stroke-opacity="0.1" stroke-width="2"/>
+
+  <!-- Stylized Abstract Goose + Download Arrow -->
+  <!-- The "Head" and "Neck" forming the top of the arrow -->
+  <path d="M512 280 C 580 280, 640 330, 640 400 C 640 450, 610 480, 512 550 C 414 480, 384 450, 384 400 C 384 330, 444 280, 512 280Z" fill="white" fill-opacity="0.9"/>
+  
+  <!-- The Arrow Body / Neck -->
+  <rect x="472" y="450" width="80" height="300" rx="40" fill="white"/>
+  
+  <!-- The Arrow Head (Bottom) -->
+  <path d="M380 680 L 512 840 L 644 680" stroke="white" stroke-width="80" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Goose Eye -->
+  <circle cx="512" cy="360" r="15" fill="#FF5C00"/>
+
+  <!-- Bottom Accent -->
+  <path d="M300 880 Q 512 920 724 880" stroke="white" stroke-opacity="0.2" stroke-width="20" stroke-linecap="round"/>
+
+  <defs>
+    <linearGradient id="main_grad" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF9D00"/>
+      <stop offset="1" stop-color="#FF4500"/>
+    </linearGradient>
+  </defs>
+</svg>

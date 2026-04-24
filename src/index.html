@@ -13,10 +13,17 @@
   <div class="sidebar">
     <div class="sidebar-header">
       <div class="logo-placeholder">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M10 8l6 4-6 4V8z"></path>
-          <path d="M12 2a10 10 0 0 1 10 10"></path>
+        <svg viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1024" height="1024" rx="220" fill="url(#logo_grad)"/>
+          <path d="M512 280 C 580 280, 640 330, 640 400 C 640 450, 610 480, 512 550 C 414 480, 384 450, 384 400 C 384 330, 444 280, 512 280Z" fill="white"/>
+          <rect x="472" y="450" width="80" height="300" rx="40" fill="white"/>
+          <path d="M380 680 L 512 840 L 644 680" stroke="white" stroke-width="80" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="logo_grad" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FF9D00"/>
+              <stop offset="1" stop-color="#FF4500"/>
+            </linearGradient>
+          </defs>
         </svg>
       </div>
       <div class="brand">
@@ -92,7 +99,10 @@
               <div class="log-container">
                 <div class="log-header">
                   <span>控制台日志</span>
-                  <button id="copyParseLogBtn" class="btn btn-ghost text-sm">复制</button>
+                  <div class="log-actions">
+                    <button id="clearParseLogBtn" class="btn btn-ghost text-sm">清除</button>
+                    <button id="copyParseLogBtn" class="btn btn-ghost text-sm">复制</button>
+                  </div>
                 </div>
                 
                 <div id="parseStatus" class="progress-container" style="display:none;">

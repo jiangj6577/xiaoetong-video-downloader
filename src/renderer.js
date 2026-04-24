@@ -15,6 +15,7 @@ const els = {
   parseStatusText: document.getElementById('parseStatusText'),
   parseLogOutput: document.getElementById('parseLogOutput'),
   copyParseLogBtn: document.getElementById('copyParseLogBtn'),
+  clearParseLogBtn: document.getElementById('clearParseLogBtn'),
   // Mode switcher elements
   navAuto: document.getElementById('navAuto'),
   navManual: document.getElementById('navManual'),
@@ -205,7 +206,6 @@ els.clearLoginBtn.addEventListener('click', async () => {
 
 function appendParseLog(message) {
   if (!message) return;
-  els.parseLogOutput.style.display = 'block';
   const line = `${new Date().toLocaleTimeString()}  ${message}\n`;
   els.parseLogOutput.textContent += line;
   els.parseLogOutput.scrollTop = els.parseLogOutput.scrollHeight;
@@ -237,7 +237,6 @@ els.parseBtn.addEventListener('click', async () => {
 
   // Reset UI
   els.parseLogOutput.textContent = '';
-  els.parseLogOutput.style.display = 'block';
   els.parseStatus.style.display = 'block';
   els.parseProgressBar.style.width = '0%';
   els.parseStatusText.textContent = '解析中...';
@@ -301,6 +300,10 @@ async function init() {
 // ─── Events ───
 
 els.addRowBtn.addEventListener('click', () => addRow());
+
+els.clearParseLogBtn.addEventListener('click', () => {
+  els.parseLogOutput.textContent = '';
+});
 
 els.copyParseLogBtn.addEventListener('click', async () => {
   const text = buildParseLogCodeBlock();
